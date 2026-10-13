@@ -1,96 +1,114 @@
-import streamlit as st
+# =========================================================
+elif page == "Skills":
+    st.markdown('<div class="section-kicker">Capabilities</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-heading">Skills I’m building and applying.</div>', unsafe_allow_html=True)
+    left, right = st.columns(2, gap="large")
+    with left:
+        st.markdown("### Marketing & business")
+        for chip in ["Strategic Marketing", "Brand Strategy", "Market Research", "Consumer Insights",
+                     "Social Media Strategy", "Digital Marketing", "Relationship Building",
+                     "Go-to-Market Planning", "Customer Understanding"]:
+            st.markdown(f'<span class="skill-chip">{chip}</span>', unsafe_allow_html=True)
+    with right:
+        st.markdown("### Tools & technical")
+        for chip in ["Canva", "Google Ads", "Meta Ads", "Excel", "Python", "C Programming",
+                     "HTML & CSS", "Marketing Analytics"]:
+            st.markdown(f'<span class="skill-chip">{chip}</span>', unsafe_allow_html=True)
 
-st.set_page_config(
-    page_title="Saranga Vinod | Marketing Portfolio",
-    page_icon="✨",
-    layout="wide",
-    initial_sidebar_state="collapsed",
+    st.write("")
+    st.markdown("### Working style")
+    a, b, c = st.columns(3)
+    with a:
+        st.markdown('<div class="info-card"><div class="info-title">Research-led</div><div class="info-copy">Start with the customer, context and evidence.</div></div>', unsafe_allow_html=True)
+    with b:
+        st.markdown('<div class="info-card"><div class="info-title">Structured thinking</div><div class="info-copy">Break down a challenge into manageable parts.</div></div>', unsafe_allow_html=True)
+    with c:
+        st.markdown('<div class="info-card"><div class="info-title">Collaborative</div><div class="info-copy">Communicate ideas and learn from feedback.</div></div>', unsafe_allow_html=True)
+
+# =========================================================
+# EDUCATION
+# =========================================================
+elif page == "Education":
+    st.markdown('<div class="section-kicker">Education & learning</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-heading">Building a business-and-technology foundation.</div>', unsafe_allow_html=True)
+
+    st.markdown(
+        """
+        <div class="info-card">
+            <div class="info-label">2025–2027</div>
+            <div class="info-title">PGDM · Fortune Institute of International Business (FIIB)</div>
+            <div class="info-copy">Major: Marketing · Minor: Operations</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.write("")
+    st.markdown(
+        """
+        <div class="info-card">
+            <div class="info-label">2020–2024</div>
+            <div class="info-title">BTech · Computer Science</div>
+            <div class="info-copy">Vimal Jyothi Engineering College</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.write("")
+    st.markdown("### Certifications & learning")
+    for cert in [
+        "Software Testing — NPTEL",
+        "Business Analytics — Internshala",
+        "Global Immersion Program — Vietnam",
+    ]:
+        st.markdown(f"- {cert}")
+
+# =========================================================
+# CONTACT
+# =========================================================
+elif page == "Contact":
+    st.markdown(
+        """
+        <div class="contact-panel">
+            <div class="section-kicker" style="color:#9db4ff;">Let’s connect</div>
+            <h2 style="font-size:2.25rem; letter-spacing:-.05em; margin-bottom:.6rem;">
+                Open to learning, collaboration and new opportunities.
+            </h2>
+            <p>Feel free to explore my work or connect with me professionally.</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.write("")
+    contact_cols = st.columns(3)
+    with contact_cols[0]:
+        st.markdown('<div class="info-card"><div class="info-label">GitHub</div><div class="info-title">Projects & code</div><div class="info-copy">Explore my repositories and project work.</div></div>', unsafe_allow_html=True)
+        st.link_button("Visit GitHub ↗", GITHUB_PROFILE, use_container_width=True)
+    with contact_cols[1]:
+        st.markdown('<div class="info-card"><div class="info-label">LinkedIn</div><div class="info-title">Professional profile</div><div class="info-copy">Connect with me on LinkedIn.</div></div>', unsafe_allow_html=True)
+        if LINKEDIN_URL:
+            st.link_button("Open LinkedIn ↗", LINKEDIN_URL, use_container_width=True)
+        else:
+            st.caption("Add your LinkedIn URL near the top of app.py.")
+    with contact_cols[2]:
+        st.markdown('<div class="info-card"><div class="info-label">Email</div><div class="info-title">Get in touch</div><div class="info-copy">For professional conversations and opportunities.</div></div>', unsafe_allow_html=True)
+        if EMAIL_ADDRESS:
+            st.link_button("Email me ↗", f"mailto:{EMAIL_ADDRESS}", use_container_width=True)
+        else:
+            st.caption("Add your professional email near the top of app.py.")
+
+    if RESUME_URL:
+        st.write("")
+        st.link_button("View my resume ↗", RESUME_URL)
+
+# =========================================================
+# FOOTER
+# =========================================================
+st.markdown(
+    """
+    <div class="footer">
+        <strong>Saranga Vinod</strong> · Marketing Portfolio
+        <span style="float:right;">Built with Streamlit</span>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
-
-# =========================================================
-# EDIT THESE DETAILS BEFORE PUBLISHING
-# =========================================================
-LINKEDIN_URL = ""  # Add your LinkedIn profile URL
-EMAIL_ADDRESS = ""  # Add your professional email
-RESUME_URL = ""  # Add a public resume link, if available
-
-GITHUB_PROFILE = "https://github.com/sarangavinod0103-wq"
-
-PROJECTS = [
-    {
-        "number": "01",
-        "title": "WishCare",
-        "category": "SOCIAL MEDIA & CONTENT STRATEGY",
-        "summary": (
-            "A social media and content marketing strategy exploring consumer "
-            "research, competitor positioning, campaign development, creator "
-            "strategy and community engagement."
-        ),
-        "contribution": "Marketing strategy · Consumer research",
-        "repo": "https://github.com/sarangavinod0103-wq/Wishcare-social-media-strategy",
-        "tag": "Brand & Content",
-    },
-    {
-        "number": "02",
-        "title": "Lenskart Smart Glasses",
-        "category": "BRAND & GO-TO-MARKET STRATEGY",
-        "summary": (
-            "A strategic marketing project exploring how smart glasses can be "
-            "positioned as a natural extension of everyday eyewear through "
-            "consumer insight, positioning and go-to-market planning."
-        ),
-        "contribution": "Consumer insight · Positioning · GTM",
-        "repo": "https://github.com/sarangavinod0103-wq/lenskart-smart-glasses-strategy",
-        "tag": "Product Marketing",
-    },
-    {
-        "number": "03",
-        "title": "VedaCare",
-        "category": "BRAND STRATEGY & DIGITAL MARKETING",
-        "summary": (
-            "A herbal skincare brand strategy covering brand identity, product "
-            "portfolio, segmentation, targeting and positioning, and a digital "
-            "marketing approach using the POEM framework."
-        ),
-        "contribution": "Brand strategy · Digital marketing",
-        "repo": "https://github.com/sarangavinod0103-wq/vedacare-brand-strategy",
-        "tag": "Brand Strategy",
-    },
-    {
-        "number": "04",
-        "title": "Amul × Gen Z",
-        "category": "CONSUMER-FOCUSED MARKETING",
-        "summary": (
-            "A Gen Z-focused marketing strategy exploring brand relevance through "
-            "product innovation, packaging, influencer engagement, quick commerce "
-            "and retail experience."
-        ),
-        "contribution": "Market analysis · Consumer strategy",
-        "repo": "https://github.com/sarangavinod0103-wq/amul-gen-z-marketing-strategy",
-        "tag": "Consumer Insights",
-    },
-]
-
-EXPERIENCES = [
-    {
-        "company": "Bajaj Capital",
-        "role": "Corporate Internship Program — Marketing / Sales",
-        "period": "Internship",
-        "description": (
-            "Customer-facing experience involving mutual fund sales and SIP-related "
-            "customer conversations. Add your exact dates and verified target results "
-            "before publishing."
-        ),
-    },
-    {
-        "company": "Unlimits",
-        "role": "Marketing & Design Thinking Intern",
-        "period": "Oct–Nov 2025",
-        "description": (
-            "Conducted 20+ user interviews, developed empathy maps and proposed UI "
-            "simplifications to help reduce navigation friction."
-        ),
-    },
-    {
-        "company": "Udayan Care",
-        "role": "Social Internship Program",
